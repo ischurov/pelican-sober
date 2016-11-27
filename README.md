@@ -1,3 +1,20 @@
+# pelican-sober-iv #
+
+Pelican-sober-iv is a modification of the original
+[pelican-sober](https://github.com/fle/pelican-sober) theme.
+
+Key differences are:
+
+- Theme translated to Russian
+- List of tags added to side panel
+- Main page consists of article summaries
+- Added Facebook Comments integration (have to add `PELICAN_SOBER_IV_FACEBOOK_APP_ID` config variable)
+- Fixed some issues with social icons
+
+This theme is used in [my blog](http://ischurov.github.io).
+
+Below is README of the original Pelican-sober
+
 # sober #
 
 Pelican-sober is a very light theme focused on readability :

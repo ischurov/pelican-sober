@@ -26,6 +26,20 @@
 </head>
 	
 <body>
+    {% if PELICAN_SOBER_IV_FACEBOOK_APP_ID %}
+        <!-- facebook social -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId={{
+              PELICAN_SOBER_IV_FACEBOOK_APP_ID }}";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- /facebook social -->
+    {% endif %}
+
 {{ FEED_ATOM }}
     <div class="container">
 	  
@@ -60,25 +74,34 @@
 
 	          {% if PELICAN_SOBER_ABOUT %}
 	            <aside>
-	              <h2>About</h2>
-			      <p>
+	              <h2>Об авторе</h2>
+			      <p style='hyphens: auto'>
                     {{ PELICAN_SOBER_ABOUT }}
 			      </p>
 			    </aside>
 			  {% endif %}
 
   	          <nav>
-	            <h2>Categories</h2>
+	            <h2>Категории</h2>
 	            <ul>
 	              {% for cat, null in categories %}
 	                <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
 	              {% endfor %}
 	            </ul>
 	          </nav>
+              <nav>
+                  <h2>Теги</h2>
+                  <p style='text-align:left'>
+                    {% for tag, articles in tags|sort %}
+                    {% set num = articles|count %}
+                    <a href="#{{ tag.slug }}-ref">{{ tag }}<span><sup>{{ num }}</sup></span></a>  
+                    {% endfor %}
+                  </p>
+                </nav>
 
 	          {% if SOCIAL %}
 	            <aside>
-	            <h2>Social</h2>
+	            <h2>Соцсети</h2>
 			      <ul class="social">
 				    {% for name, link in SOCIAL %}
 				    <li><a href="{{ link }}">{{ name }}</a><i></i></li>
@@ -89,7 +112,7 @@
 
 	          {% if LINKS %}
 	            <aside>
-	              <h2>Blogroll</h2>
+	              <h2>Ссылки</h2>
 	              <ul>
 	                {% for name, link in LINKS %}
 	                  <li><a href="{{ link }}">{{ name }}</a></li>
@@ -104,7 +127,7 @@
 
       <footer>
 		<p role="contentinfo">
-		  {{ AUTHOR }} - Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>. Theme <a href="https://github.com/fle/pelican-sober">pelican-sober</a>.
+        {{ AUTHOR }} с помощью <a href="http://alexis.notmyidea.org/pelican/">pelican</a>. Тема <a href="https://github.com/pelican-sober-iv">pelican-sober-iv</a>, основана на <a href="https://github.com//pelican-sober">pelican-sober</a>. Использована <a href="https://www.iconfinder.com/icons/1220346/overflow_stachoverflow_stack_stackoverflow_icon#size=16">иконка</a> (<a href="https://www.iconfinder.com/rebininfotech">Rebin Infotech</a>).
     	</p>
 
 	  </footer>	
