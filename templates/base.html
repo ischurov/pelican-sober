@@ -94,7 +94,7 @@
                   <p style='text-align:left'>
                     {% for tag, articles in tags|sort %}
                     {% set num = articles|count %}
-                    <a href="#{{ tag.slug }}-ref">{{ tag }}<span><sup>{{ num }}</sup></span></a>  
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}<span><sup>{{ num }}</sup></span></a>  
                     {% endfor %}
                   </p>
                 </nav>
